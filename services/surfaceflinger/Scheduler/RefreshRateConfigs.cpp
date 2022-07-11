@@ -293,11 +293,15 @@ RefreshRate RefreshRateConfigs::getBestRefreshRateLocked(
 
     if (outSignalsConsidered) *outSignalsConsidered = {};
     const auto setTouchConsidered = [&] {
-        outSignalsConsidered->touch = true;
+        if (outSignalsConsidered) {
+            outSignalsConsidered->touch = true;
+        }
     };
 
     const auto setIdleConsidered = [&] {
-        outSignalsConsidered->idle = true;
+        if (outSignalsConsidered) {
+            outSignalsConsidered->idle = true;
+        }
     };
 
     int noVoteLayers = 0;
